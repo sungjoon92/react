@@ -8,7 +8,13 @@ import MySite from "./MySite";
 import Welcome from "./Welcome ";
 import Card from "./card";
 import Button from "./button";
-
+import Cold from "./Cold";
+import Cold1 from "./Cold1";
+import Cold2 from "./Cold2";
+import Cold3 from "./Cold3";
+import Login from "./login/login";
+import Page from "./login/Page";
+import Filter from "./login/filter";
 function App() {
   return (
     <div>
@@ -43,6 +49,13 @@ function App() {
       <Button name={"취소"} backgroundColor={"red"}></Button>
       <Button name={"보류"} backgroundColor={"gray"}></Button>
       <Button name={"1억년"} backgroundColor={"pink"}></Button>
+      <Cold>false</Cold>
+      <Cold1></Cold1>
+      <Cold2></Cold2>
+      <Cold3></Cold3>
+      <Login></Login>
+      <Page userType={"user"}></Page>
+      <Filter></Filter>
     </div>
   );
 }
