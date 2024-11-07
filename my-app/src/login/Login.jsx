@@ -22,8 +22,8 @@ function Login({ id, password }) {
 
   return (
     <>
-      {isLoggedIn && <div>"환영합니다"</div>}
-      {!isLoggedIn && <div>"로그인해주세요"</div>}
+      {isLoggedIn && <div>환영합니다</div>}
+      {!isLoggedIn && <div>로그인해주세요</div>}
     </>
   );
 }

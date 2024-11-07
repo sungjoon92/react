@@ -35,7 +35,7 @@ function Filter() {
     <li key={person.id}>
       <p>
         <b>{person.name}:</b>
-        {" " + person.profession + " "}
+        <div> {person.profession} </div>
       </p>
     </li>
   ));

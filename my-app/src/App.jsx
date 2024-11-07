@@ -15,6 +15,11 @@ import Cold3 from "./Cold3";
 import Login from "./login/login";
 import Page from "./login/Page";
 import Filter from "./login/filter";
+import Filter2 from "./login/Filter2";
+import Names from "./20241107/names";
+import Rendering from "./20241107/Rendering";
+import Cafe from "./20241107/Cafe";
+import SHOP from "./20241107/SHOP";
 function App() {
   return (
     <div>
@@ -56,6 +61,12 @@ function App() {
       <Login></Login>
       <Page userType={"user"}></Page>
       <Filter></Filter>
+      <Filter2></Filter2>
+      ----------------------------------------------
+      <Names></Names>
+      <Rendering width={"150px"} height={"150px"}></Rendering>
+      <Cafe></Cafe>
+      <SHOP></SHOP>
     </div>
   );
 }

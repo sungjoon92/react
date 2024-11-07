@@ -1,0 +1,55 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.container {
+  width: 80%;
+  margin: 2% auto;
+  display: flex;
+  justify-content: space-between;
+  border: 10px double black;
+  padding: 5%;
+}
+
+.card {
+  background-color: lightgray;
+  width: 30%;
+}
+
+.card > img {
+  width: 100%;
+}
+
+li {
+  list-style: none;
+  font-size: 1.5rem;
+}
+
+.flex {
+  display: flex;
+}
+.flex-direction-column {
+  flex-direction: column;
+}
+
+.space-between {
+  justify-content: space-between;
+}
+hr {
+  margin: 3% auto;
+}
+
+h2 {
+  text-align: center;
+  font-size: 3rem;
+}
+h3 {
+  text-align: center;
+  font-size: 2rem;
+  border-bottom: 1px solid gray;
+  padding: 3%;
+}
+.coffee ul li,
+.ADE ul li {
+  margin: 10px 0;
+}
