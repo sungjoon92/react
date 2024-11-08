@@ -22,8 +22,16 @@ li {
   justify-content: space-between;
 }
 
+#maincontainer {
+  width: 80%;
+  margin: 0 auto;
+  border: 1px solid #000;
+  background-color: antiquewhite;
+}
 header {
+  background-color: antiquewhite;
   margin-bottom: 2%;
+  padding: 0;
 }
 
 .header-top {
@@ -31,7 +39,9 @@ header {
   margin: 0 auto;
   align-items: center;
 }
-
+nav {
+  background-color: antiquewhite;
+}
 nav ul li {
   margin-right: 10%;
 }
@@ -116,7 +126,9 @@ h2 {
 .more-box span {
   display: block;
 }
-
+a > span {
+  font-size: 1rem;
+}
 /* section3 end */
 
 /* footer start */

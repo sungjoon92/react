@@ -20,6 +20,10 @@ import Names from "./20241107/names";
 import Rendering from "./20241107/Rendering";
 import Cafe from "./20241107/Cafe";
 import SHOP from "./20241107/SHOP";
+import Menu from "./20241107/component/menubettergooddata/Menu";
+import UseEffect from "./20241108/UseEffect";
+import Button2 from "./20241108/Button2";
+import Numbutton from "./20241108/Numbutton";
 function App() {
   return (
     <div>
@@ -67,6 +71,27 @@ function App() {
       <Rendering width={"150px"} height={"150px"}></Rendering>
       <Cafe></Cafe>
       <SHOP></SHOP>
+      <Menu></Menu>
+      <UseEffect></UseEffect>
+      <Button2 onclick={() => alert("실행")} message="haha"></Button2>
+      <Button2 onclick={() => alert("취소")}></Button2>
+      {/*  */}
+      <Button2 onclick={() => alert("확인 완료")} backgroundColor="blue">
+        확인
+      </Button2>
+      <Button2 onclick={() => alert("취소 완료")} backgroundColor="red">
+        취소
+      </Button2>
+      <Button2 onclick={() => alert("보류 완료")} backgroundColor="grey">
+        보류
+      </Button2>
+      <Button2
+        onclick={() => alert("1억년을 얻었습니다")}
+        backgroundColor="pink"
+      >
+        1억년
+      </Button2>
+      <Numbutton></Numbutton>
     </div>
   );
 }

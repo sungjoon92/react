@@ -1,9 +1,6 @@
 import React from "react";
-import apparel from "../assets/apparel.png";
-import appare2 from "../assets/apparel2.jpg";
-import appare3 from "../assets/apparel3.jpg";
-import "./SHOP.css";
-function SHOP() {
+
+function Apparel() {
   return (
     <div id="maincontainer">
       {/* <!-- header start --> */}
@@ -126,4 +123,4 @@ function SHOP() {
   );
 }
 
-export default SHOP;
+export default Apparel;
