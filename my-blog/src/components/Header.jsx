@@ -13,13 +13,10 @@ function Header() {
           <Link to="/posts">게시글로</Link>
         </li>
         <li>
-          <Link to="/posts">게시글로</Link>
+          <Link to="/webtoonList">웹툰</Link>
         </li>
         <li>
-          <Link to="/posts">게시글로</Link>
-        </li>
-        <li>
-          <Link to="/posts">게시글로</Link>
+          <Link to="/novel">소설</Link>
         </li>
       </ul>
     </header>
