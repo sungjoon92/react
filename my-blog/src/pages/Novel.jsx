@@ -6,7 +6,6 @@ function Novel() {
       id: 1,
       title: "지상최대 공모전",
       content: "공포",
-      
     },
     {
       id: 2,
@@ -42,7 +41,7 @@ function Novel() {
   return (
     <>
       <div>
-        <h2>웹툰</h2>
+        <h2>소설</h2>
         <ul className="novel-menu">
           {novels.map((novel) => {
             return (
