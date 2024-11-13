@@ -23,3 +23,53 @@ footer {
   text-align: center;
   background: beige;
 }
+
+h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2%;
+}
+.webtoon {
+  margin-bottom: 3%;
+}
+.webtoon-menu {
+  display: flex;
+  justify-content: space-around;
+}
+
+.novel-menu {
+  display: flex;
+  justify-content: space-around;
+}
+
+.webtoon-menu li {
+  width: 100%;
+  text-align: center;
+}
+.webtoon-menu li a p {
+  padding: 5%;
+  transition: 0.1s;
+}
+
+.webtoon-menu li a p:hover {
+  font-size: 1.1rem;
+  font-weight: bold;
+  opacity: 50%;
+}
+
+.detail-content ul {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+}
+.detail-content li {
+  width: 100%;
+}
+
+.detail-content img {
+  width: 100%;
+  height: 100%;
+}
+.bg-red {
+  border-bottom: 3px solid red;
+}
