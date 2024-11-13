@@ -2,7 +2,9 @@
    v2.0 | 20110126
    License: none (public domain)
 */
-
+* {
+  color: black;
+}
 html,
 body,
 div,
@@ -109,8 +111,13 @@ body {
   line-height: 1;
 }
 ol,
-ul {
+ul,
+li {
   list-style: none;
+}
+
+a {
+  text-decoration: none;
 }
 blockquote,
 q {
