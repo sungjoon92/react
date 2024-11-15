@@ -1,22 +1,48 @@
-import React, { useState } from "react";
+import Axios from "axios";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 
 export default function PostList() {
   const navigate = useNavigate();
+  const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  const posts = useSelector((state) => state.posts);
+  // const posts = useSelector((state) => state.posts);
+  useEffect(() => {
+    async function fetchPost() {
+      try {
+        const url = "http://localhost:3000/posts";
+        const respons = await Axios.get(url);
+        // const respons = await Axios({ url: url });
 
-  // function logincheck(e) {
-  //   if (!flag) {
-  //     e.preventDefault(); // 링크 이동 방지
-  //     alert("로그인하세유");
-  //   } else {
-  //     navigate(`/posts/create`); // 로그인되어 있을 때만 이동
-  //   }
-  // }
+        const data = respons.data;
+        ``;
+        setLoading(false);
+        setPosts(data);
+      } catch (err) {
+        setLoading(false);
+        setError("대체 어디가에러야 " + err.message);
+        console.error(err);
+        console.log("에러남ㅠㅠ");
+      }
+    }
+
+    fetchPost();
+  }, []);
+  if (loading) {
+    // let posts = document.querySelector(".posts");
+    // posts.style.display = "none";
+    return <div>로딩중</div>;
+  }
+
+  if (error) {
+    return <div>{error}</div>;
+  }
+
   return (
-    <div>
+    <div className="posts">
       <h2>posts</h2>
       <ul>
         {posts.map((post) => {
