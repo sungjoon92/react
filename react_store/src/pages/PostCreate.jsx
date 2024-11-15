@@ -3,6 +3,7 @@ import { useState } from "react";
 import { addPost } from "../store/slices/postsSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 function PostCreate() {
   const { isLoggedIn } = useSelector((state) => state.login);
   const [formDate, setFormDate] = useState({ title: "", content: "" });
@@ -10,7 +11,6 @@ function PostCreate() {
   // 생성, 수정, 삭제를위한 리듀서 문법
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
   // 최초 한번, 또는 dependency가 바뀌었을 때
 
   // url을 통한 위치로 강제이동시 loginSlice에 있는 초기 state상태로 설정됨
@@ -35,15 +35,31 @@ function PostCreate() {
     });
   }
 
+  // store 방식
+  // function handleSubmit(e) {
+  //   e.preventDefault();
+
+  //   const id = Date.now(); // 임시 id`
+
+  //   console.log(formDate);
+  //   dispatch(addPost({ ...formDate, id }));
+  //   navigate(`/posts/${id}`);
+  // }
+
+  //axios 방식
   function handleSubmit(e) {
     e.preventDefault();
-
-    const id = Date.now(); // 임시 id`
-
-    console.log(formDate);
-    dispatch(addPost({ ...formDate, id }));
-    navigate(`/posts/${id}`);
+    async function createPost() {
+      const url = `http://localhost:3000/posts`;
+      const respons = await axios.post(url, formDate);
+      const data = respons.data;
+      const id = data.id;
+      navigate(`/posts/${id}`);
+    }
+    createPost();
   }
+
+ 
   return (
     <div>
       <h3>PostCreate</h3>
