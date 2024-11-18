@@ -1,0 +1,51 @@
+header {
+  background: #d6cbcb;
+}
+#main-logo {
+  font-size: 3rem;
+  text-align: center;
+}
+header ul {
+  margin-top: 2%;
+  display: flex;
+  justify-content: space-around;
+}
+header ul li {
+  padding: 3%;
+}
+
+.movie-list {
+  display: flex;
+  justify-content: space-between;
+
+  text-align: center;
+  font-weight: bold;
+}
+.movie-list .movie-item {
+  width: 200px;
+  height: 300px;
+  margin: 1%;
+}
+
+.movie-list .movie-item:hover {
+  transform: 0.5s;
+  opacity: 80%;
+  border: 1px solid transparent;
+
+  box-sizing: border-box;
+}
+.movie-list .movie-item h3 {
+  background-color: rgb(181, 236, 51);
+  padding: 2%;
+}
+.movie-list .movie-item img {
+  width: 100%;
+  height: 250px;
+}
+
+.movie-item {
+}
+footer {
+  font-size: 5rem;
+  text-align: center;
+}
