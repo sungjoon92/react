@@ -1,10 +1,17 @@
 import React, { useEffect, useState } from "react";
 import movieAPI from "../api/movieAPI";
+import { Link } from "react-router-dom";
 function Home() {
   // movies 스테이트 만들기
   const [NowPlayings, setNowPlayings] = useState([]);
   const [Populars, setPopulars] = useState([]);
   const [TopRateds, setTopRateds] = useState([]);
+
+  const movies = [
+    { title: "Now Playing", data: NowPlayings },
+    { title: "Populars", data: Populars },
+    { title: "Top Rated", data: TopRateds },
+  ];
 
   useEffect(() => {
     async function NowPlaying() {
@@ -55,55 +62,26 @@ function Home() {
   return (
     // 영화 데이터 표시
     <>
-      <div>
-        <h2>Now Playing</h2>
-        <ul className="movie-list">
-          {NowPlayings.map((movie) => (
-            <a href="/" key={movie.id}>
-              <li className="movie-item">
-                <h3>{movie.title}</h3>
-                <img
-                  src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
-                  alt={movie.title}
-                />
-                <p></p>
+      {movies.map((section) => (
+        <div id="movie-container" key={section.title}>
+          <h2>{section.title}</h2>
+          <ul className="movie-list">
+            {section.data.map((movie) => (
+              <li className="movie-item" key={movie.id}>
+                <Link to="./MovieDetail">
+                  <a href="/">
+                    <h3>{movie.title}</h3>
+                    <img
+                      src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
+                      alt={movie.title}
+                    />
+                  </a>
+                </Link>
               </li>
-            </a>
-          ))}
-        </ul>
-
-        <h2>Popular</h2>
-        <ul className="movie-list">
-          {Populars.map((movie) => (
-            <a href="/" key={movie.id}>
-              <li className="movie-item">
-                <h3>{movie.title}</h3>
-                <img
-                  src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
-                  alt={movie.title}
-                />
-                <p>{movie.popularity}</p>
-              </li>
-            </a>
-          ))}
-        </ul>
-
-        <h2>Top Rated</h2>
-        <ul className="movie-list">
-          {TopRateds.map((movie) => (
-            <a href="/" key={movie.id}>
-              <li className="movie-item">
-                <h3>{movie.original_name}</h3>
-                <img
-                  src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
-                  alt={movie.original_name}
-                />
-                <p>{movie.vote_average}</p>
-              </li>
-            </a>
-          ))}
-        </ul>
-      </div>
+            ))}
+          </ul>
+        </div>
+      ))}
     </>
   );
 }

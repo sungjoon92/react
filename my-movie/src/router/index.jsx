@@ -3,6 +3,7 @@ import RootLayout from "../RootLayout";
 import Home from "../pages/Home";
 import NotFound from "../pages/NotFound";
 import MovieList from "../pages/MovieList";
+import MovieDetail from "../pages/Movies/MovieDetail";
 
 const router = createBrowserRouter([
   {
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
       {
         path: "/MovieList",
         element: <MovieList></MovieList>,
+      },
+      {
+        path: "/MovieDetail",
+        element: <MovieDetail></MovieDetail>,
       },
     ],
   },

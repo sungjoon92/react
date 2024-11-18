@@ -14,37 +14,52 @@ header ul li {
   padding: 3%;
 }
 
+/* Home 영화 리스트 */
+
+#movie-container {
+  margin-top: 2%;
+  overflow: hidden;
+  position: relative;
+}
+
+#movie-container h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  background: linear-gradient(to right, #ccff00, #ffcc00);
+}
+
 .movie-list {
   display: flex;
   justify-content: space-between;
-
   text-align: center;
   font-weight: bold;
+  overflow: hidden;
+  position: relative;
 }
+
 .movie-list .movie-item {
   width: 200px;
-  height: 300px;
-  margin: 1%;
+  margin: 2%;
+  box-sizing: border-box;
 }
 
 .movie-list .movie-item:hover {
   transform: 0.5s;
   opacity: 80%;
-  border: 1px solid transparent;
-
-  box-sizing: border-box;
 }
 .movie-list .movie-item h3 {
-  background-color: rgb(181, 236, 51);
-  padding: 2%;
+  height: 30px;
+  line-height: 30px;
+  background-color: #ccff00; /* 배경 색상 */
+  text-align: center; /* 가운데 정렬 */
+  margin: 0 auto; /* 가운데 정렬을 위해 좌우 마진 자동 */
 }
 .movie-list .movie-item img {
-  width: 100%;
-  height: 250px;
+  width: 200px;
+  height: 300px;
+  transition: transform 0.5s ease-in-out; /* 부드러운 이동 효과 */
 }
 
-.movie-item {
-}
 footer {
   font-size: 5rem;
   text-align: center;
