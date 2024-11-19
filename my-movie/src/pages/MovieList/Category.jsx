@@ -1,23 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import movieAPI from "../../api/movieAPI";
-
 function NowPlaying() {
   const { category } = useParams();
   console.log(category);
+  const [movies, setMovie] = useState([]);
 
-  const [movie, setMovie] = useState([]);
   useEffect(() => {
     async function fetchMovies() {
       try {
-        if (category === "this") {
-        // if (만약 params에 잇던 카테고리가 now_p, pop, 이런게 아니면) {
-        console.log(category);
-
-          const data = await movieAPI.getNowPlaying();
-          setMovie(data.results);
-          // console.log(data.results);
-        }
+        const data = await movieAPI.getMovies(category);
+        setMovie(data.results);
       } catch (error) {
         console.error("에러 그만해~", error);
       }
@@ -27,11 +20,26 @@ function NowPlaying() {
 
   return (
     <>
-      {movie.map((el) => {
-        console.log(el);
-
-        <div>{el.title}</div>;
-      })}
+      <div id="movie-container">
+        <div className="movie-list-title">
+          <h2>{movies.title}</h2>
+        </div>
+        <ul className="movie-list">
+          {movies.map((movie) => {
+            return (
+              <li className="movie-item" key={movie.id}>
+                <Link to={`./movie/detail/${movie.id}`}>
+                  <h3>{movie.title}</h3>
+                  <img
+                    src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
+                    alt={movie.title}
+                  />
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
     </>
   );
 }

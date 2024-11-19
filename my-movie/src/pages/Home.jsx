@@ -5,12 +5,12 @@ import { Link } from "react-router-dom";
 function Home() {
   // movies 스테이트 만들기
   const [NowPlayings, setNowPlayings] = useState([]);
-  const [Populars, setPopulars] = useState([]);
+  const [Popular, setPopular] = useState([]);
   const [TopRateds, setTopRateds] = useState([]);
 
   const movies = [
     { path: "now_playing", title: "Now Playing", data: NowPlayings },
-    { path: "populars", title: "Populars", data: Populars },
+    { path: "popular", title: "Popular", data: Popular },
     { path: "top_rated", title: "Top Rated", data: TopRateds },
   ];
   useEffect(() => {
@@ -25,7 +25,7 @@ function Home() {
 
         // 상태 업데이트
         setNowPlayings(nowPlayingData.results);
-        setPopulars(popularData.results);
+        setPopular(popularData.results);
         setTopRateds(topRatedData.results);
 
         // 디버깅용 로그 출력

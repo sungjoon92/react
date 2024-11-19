@@ -25,15 +25,16 @@ const movieAPI = {
     const response = await api.get(`${topRated + ko + page}`);
     return response.data;
   },
+
   // 범용적
-  func: async (category) => {
+  getMovies: async (category) => {
     const response = await api.get(`${category + ko + page}`);
     return response.data;
   },
 
   // 영화 디테일 페이지
   getMovieById: async (movieId) => {
-    const response = await api.get(`/${movieId + ko}`);
+    const response = await api.get(`/${movieId + ko + page}`);
     return response.data;
   },
 };

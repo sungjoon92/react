@@ -4,7 +4,7 @@ import movieAPI from "../../api/movieAPI";
 
 function MovieDetail() {
   const { movieId } = useParams();
-  const [movie, setMovie] = useState(null);
+  const [movie, setMovie] = useState([]);
 
   useEffect(() => {
     async function fetchMovieDetails() {
