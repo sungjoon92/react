@@ -20,14 +20,18 @@ function MovieDetail() {
   }, [movieId]);
 
   return (
-    <div>
-      <h2>{movie?.title}</h2>
-      {console.log(movieId)}
-      <img
-        src={`https://image.tmdb.org/t/p/w500${movie?.poster_path}`}
-        alt={movie?.title}
-      />
-      <p>{movie?.overview}</p>
+    <div className="movie-detail">
+      <div className="movie-detail-box">
+        <img
+          src={`https://image.tmdb.org/t/p/w500${movie?.poster_path}`}
+          alt={movie?.title}
+        />
+      </div>
+
+      <div className="movie-detail-textbox">
+        <h2 className="movie-detail-title">{movie?.title}</h2>
+        <p>{movie?.overview}</p>
+      </div>
     </div>
   );
 }

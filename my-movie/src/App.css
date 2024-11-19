@@ -1,5 +1,5 @@
 header {
-  background: #d6cbcb;
+  background: #face7b;
 }
 #main-logo {
   font-size: 3rem;
@@ -11,6 +11,7 @@ header ul {
   justify-content: space-around;
 }
 header ul li {
+  font-size: 1.5rem;
   padding: 3%;
 }
 
@@ -21,11 +22,21 @@ header ul li {
   overflow: hidden;
   position: relative;
 }
+.movie-list-title {
+  display: flex;
+  background: linear-gradient(to right, #ccff00, #ffcc00);
+  padding: 1%;
+}
 
 #movie-container h2 {
   font-size: 2rem;
   font-weight: bold;
-  background: linear-gradient(to right, #ccff00, #ffcc00);
+  margin-right: 3%;
+}
+#movie-container a {
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding: 1%;
 }
 
 .movie-list {
@@ -50,17 +61,52 @@ header ul li {
 .movie-list .movie-item h3 {
   height: 30px;
   line-height: 30px;
-  background-color: #ccff00; /* 배경 색상 */
-  text-align: center; /* 가운데 정렬 */
-  margin: 0 auto; /* 가운데 정렬을 위해 좌우 마진 자동 */
+  background-color: #face7b;
 }
 .movie-list .movie-item img {
   width: 200px;
   height: 300px;
-  transition: transform 0.5s ease-in-out; /* 부드러운 이동 효과 */
 }
 
+/* movieDetail */
+.movie-detail {
+  display: flex;
+  justify-content: space-around;
+}
+.movie-detail > * {
+  padding: 3%;
+}
+.movie-detail-box {
+  height: 500px;
+}
+.movie-detail-box img {
+  height: 100%;
+}
+.movie-detail .movie-detail-title {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 1%;
+}
+.movie-detail-textbox {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  height: 100%;
+  line-height: 40px;
+}
+.movie-detail-textbox h2 {
+  background-color: #face7b;
+  padding: 2%;
+}
+.movie-detail p {
+  font-size: 1rem;
+  font-weight: bold;
+  opacity: 70%;
+}
+/* footer */
 footer {
   font-size: 5rem;
   text-align: center;
+  background-color: firebrick;
 }

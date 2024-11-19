@@ -14,7 +14,7 @@ export default function Header() {
           <Link to="/">Home으로</Link>
         </li>
         <li>
-          <Link to="/Movie/List">MOVIE LIST</Link>
+          <Link to="/Movie/list">MOVIE LIST</Link>
         </li>
       </ul>
     </header>

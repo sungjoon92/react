@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from "react";
 import movieAPI from "../api/movieAPI";
 import { Link } from "react-router-dom";
+
 function Home() {
   // movies 스테이트 만들기
   const [NowPlayings, setNowPlayings] = useState([]);
   const [Populars, setPopulars] = useState([]);
   const [TopRateds, setTopRateds] = useState([]);
-  const [movieId, setMovieId] = useState();
 
   const movies = [
-    { title: "Now Playing", data: NowPlayings },
-    { title: "Populars", data: Populars },
-    { title: "Top Rated", data: TopRateds },
+    { path: "now_playing", title: "Now Playing", data: NowPlayings },
+    { path: "populars", title: "Populars", data: Populars },
+    { path: "top_rated", title: "Top Rated", data: TopRateds },
   ];
   useEffect(() => {
     async function fetchAllMovies() {
@@ -45,11 +45,15 @@ function Home() {
     <>
       {movies.map((section) => (
         <div id="movie-container" key={section.title}>
-          <h2>{section.title}</h2>
+          <div className="movie-list-title">
+            <h2>{section.title}</h2>
+            {/* 카테고리 이동 */}
+            <Link to={`./movie/category/${section.path}`}>더보기</Link>
+          </div>
           <ul className="movie-list">
             {section.data.map((movie) => (
               <li className="movie-item" key={movie.id}>
-                <Link to={`./Movie/${movie.id}`}>
+                <Link to={`./movie/detail/${movie.id}`}>
                   <h3>{movie.title}</h3>
                   <img
                     src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
