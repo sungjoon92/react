@@ -20,5 +20,9 @@ const movieAPI = {
     const response = await api.get(`${topRated + ko + page}`);
     return response.data;
   },
+  getMovieById: async (movieId) => {
+    const response = await api.get(`/${movieId + ko}`);
+    return response.data;
+  },
 };
 export default movieAPI;
