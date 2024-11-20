@@ -5,6 +5,7 @@ import NotFound from "../pages/NotFound";
 import MovieList from "../pages/MovieList";
 import MovieDetail from "../pages/Movies/MovieDetail";
 import Category from "../pages/MovieList/Category";
+import Mypage from "../pages/Mypage";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -14,6 +15,10 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Home />,
+      },
+      {
+        path: "/mypage",
+        element: <Mypage></Mypage>,
       },
       {
         path: "/movie/list",

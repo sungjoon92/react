@@ -3,7 +3,6 @@ import { Link, useParams } from "react-router-dom";
 import movieAPI from "../../api/movieAPI";
 function NowPlaying() {
   const { category } = useParams();
-  console.log(category);
   const [movies, setMovie] = useState([]);
 
   useEffect(() => {

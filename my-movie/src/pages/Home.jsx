@@ -29,9 +29,9 @@ function Home() {
         setTopRateds(topRatedData.results);
 
         // 디버깅용 로그 출력
-        console.log("Now Playing:", nowPlayingData.results);
-        console.log("Popular:", popularData.results);
-        console.log("Top Rated:", topRatedData.results);
+        // console.log("Now Playing:", nowPlayingData.results);
+        // console.log("Popular:", popularData.results);
+        // console.log("Top Rated:", topRatedData.results);
       } catch (error) {
         console.error("에러 발생:", error);
       }

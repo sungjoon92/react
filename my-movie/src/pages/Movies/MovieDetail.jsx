@@ -1,16 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import movieAPI from "../../api/movieAPI";
-
+import { useDispatch, useSelector } from "react-redux";
+import { toggleLike } from "../../store/slices/isLikeSlice";
 function MovieDetail() {
   const { movieId } = useParams();
   const [movie, setMovie] = useState([]);
+  const { isLoggedIn } = useSelector((state) => state.auth);
+  const isLike = useSelector((state) => state.isLike[movieId]);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     async function fetchMovieDetails() {
       try {
-        const movieData = await movieAPI.getMovieById(movieId); // Fetch movie details using ID
+        const movieData = await movieAPI.getMovieById(movieId);
         setMovie(movieData);
+        // console.log(movieData);
       } catch (error) {
         console.error("에러 그만해~", error);
       }
@@ -19,6 +24,14 @@ function MovieDetail() {
     fetchMovieDetails();
   }, [movieId]);
 
+  // 로그인 체크 및 좋아요 상태 토글
+  function loginCheck() {
+    if (!isLoggedIn) {
+      alert("로그인 해주세요!");
+      return false;
+    }
+    dispatch(toggleLike({ id: movieId, movieData: movie })); // 로그인 후 좋아요 상태 토글
+  }
   return (
     <div className="movie-detail">
       <div className="movie-detail-box">
@@ -31,6 +44,9 @@ function MovieDetail() {
       <div className="movie-detail-textbox">
         <h2 className="movie-detail-title">{movie?.title}</h2>
         <p>{movie?.overview}</p>
+        <button className="islike-button" onClick={() => loginCheck()}>
+          {isLike ? "찜하기 취소" : "찜하기"}
+        </button>
       </div>
     </div>
   );
