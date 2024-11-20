@@ -7,28 +7,31 @@ header {
 #main-logo {
   font-size: 3rem;
   text-align: center;
+  padding: 1% 0;
 }
 header ul {
-  margin-top: 2%;
   display: flex;
   justify-content: space-around;
 }
 header ul li {
   font-size: 1.5rem;
-  padding: 2%;
+  padding: 1%;
 }
 
 /* Home 영화 리스트 */
 
 #movie-container {
   margin-top: 2%;
-  overflow: hidden;
-  position: relative;
+}
+
+.category {
+  display: flex;
+  flex-wrap: wrap;
 }
 .movie-list-title {
   display: flex;
+  padding: 0 1%;
   /* background: linear-gradient(to right, #ccff00, #ffcc00); */
-  padding: 1%;
 }
 
 #movie-container h2 {
@@ -59,9 +62,7 @@ header ul li {
 }
 
 .movie-list .movie-item {
-  width: 200px;
-  margin: 2%;
-  box-sizing: border-box;
+  margin: 1%;
 }
 
 .movie-list .movie-item:hover {

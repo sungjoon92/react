@@ -22,13 +22,14 @@ function NowPlaying() {
     <>
       <div id="movie-container">
         <div className="movie-list-title">
-          <h2>{movies.title}</h2>
+          <h2>{category}</h2>
         </div>
-        <ul className="movie-list">
+        <ul className="movie-list category">
           {movies.map((movie) => {
             return (
               <li className="movie-item" key={movie.id}>
-                <Link to={`./movie/detail/${movie.id}`}>
+                {/* 절대 경로로 변경 */}
+                <Link to={`/movie/detail/${movie.id}`}>
                   <h3>{movie.title}</h3>
                   <img
                     src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}

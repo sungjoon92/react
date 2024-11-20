@@ -8,7 +8,11 @@ export default function Header() {
 
   return (
     <header>
-      <h1 id="main-logo">Sung Joon Movie</h1>
+      <h1 id="main-logo">
+        {" "}
+        <Link to="/">Sung Joon Movie</Link>
+      </h1>
+
       <ul>
         <li>
           <Link to="/">Home으로</Link>
