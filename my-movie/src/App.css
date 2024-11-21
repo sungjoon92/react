@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Edu+AU+VIC+WA+NT+Arrows:wght@400..700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Edu+AU+VIC+WA+NT+Arrows:wght@400..700&family=Shadows+Into+Light&display=swap");
 body {
   background: linear-gradient(to right, #3b3a3a, #8b8980, #474542);
 }
@@ -5,37 +7,50 @@ body {
 /* 헤더 */
 header {
   flex-direction: column;
-  background: #91eef5;
+  background: #d4f7fa;
   z-index: 1;
+  padding-top: 1%;
+  /* 구글폰트 */
+  font-family: "Bebas Neue", sans-serif;
 }
 #main-logo {
-  font-size: 3rem;
+  font-family: "Shadows Into Light", cursive;
+  font-size: 4rem;
   text-align: center;
 }
-header ul {
+header nav {
+  width: 80%;
+  margin: 0 auto;
+}
+header nav ul {
   display: flex;
   justify-content: space-around;
 }
-header ul li {
-  font-size: 1.5rem;
+header nav ul li {
+  font-size: 2rem;
   padding: 1%;
 }
 
-/* 로그인 버튼 */
-.login-button {
+/* 로그인 박스 */
+.login-box {
   display: flex;
   justify-content: right;
   align-items: center;
-  margin-right: 5%;
-  font-size: 1rem;
+  margin: 0 5% 1% 0;
+  font-size: 2rem;
+}
+
+.login-button {
+  cursor: pointer;
 }
 /* 로그인 폼 */
 .login-form {
   width: 30%;
-  height: 30%;
+  height: 25%;
   padding: 5%;
-  background: #91eef5;
+  background: #d4f7fa;
   border: 10px double black;
+  font-size: 1.5rem;
 
   position: absolute;
   top: 50%;
@@ -45,19 +60,35 @@ header ul li {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-
-  opacity: 95%;
 }
-
 .login-form * {
-  font-size: 1.5rem;
+  height: 30%;
+}
+.login-form button {
+  margin-top: 3%;
 }
 
+/* modal */
+.modal {
+  display: none;
+}
+/* 모달 백그라운드 */
+.modal-back {
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  opacity: 30%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99;
+}
 /* 마이 페이지 */
 .my-page {
-  padding: 0 1%;
+  padding-right: 0.5%;
   cursor: pointer;
 }
+
 /* Home 영화 리스트 */
 
 #movie-container {
@@ -67,6 +98,13 @@ header ul li {
 .category {
   display: flex;
   flex-wrap: wrap;
+}
+.category p {
+  margin: 0 auto;
+  line-height: 50vh;
+  height: 50vh;
+  font-size: 3rem;
+  color: white;
 }
 .movie-list-title {
   display: flex;
@@ -112,7 +150,7 @@ header ul li {
 .movie-list .movie-item h3 {
   height: 30px;
   line-height: 30px;
-  background-color: #91eef5;
+  background-color: #d4f7fa;
 }
 .movie-list .movie-item img {
   width: 200px;
@@ -147,7 +185,7 @@ header ul li {
   line-height: 40px;
 }
 .movie-detail-textbox h2 {
-  background-color: #91eef5;
+  background-color: #d4f7fa;
   padding: 2%;
 }
 .movie-detail p {
@@ -160,16 +198,43 @@ header ul li {
 .islike-button {
   padding: 1%;
   font-size: 1.3rem;
-  background: #91eef5;
+  background: #d4f7fa;
   cursor: pointer;
 }
 .islike-button:hover {
   font-weight: bold;
 }
-
+/* flqb */
+.review h2 {
+  font-size: 3rem;
+  text-align: center;
+  color: white;
+  margin-bottom: 1%;
+  font-family: "Bebas Neue", sans-serif;
+}
+.review {
+  color: white;
+}
 /* footer */
 footer {
   font-size: 5rem;
   text-align: center;
-  background-color: #91eef5;
+  background-color: #d4f7fa;
+  font-family: "Bebas Neue", sans-serif;
+}
+
+/* input에 마우스를 올렸을 때 */
+.serach {
+  width: 50%;
+  margin: 0 auto;
+  text-align: center;
+}
+.serach input {
+  position: relative;
+}
+.serach div {
+  display: inline;
+  position: relative;
+}
+.serach span {
 }

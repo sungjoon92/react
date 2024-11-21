@@ -4,36 +4,27 @@ import { Link } from "react-router-dom";
 
 function Home() {
   // movies 스테이트 만들기
-  const [NowPlayings, setNowPlayings] = useState([]);
-  const [Popular, setPopular] = useState([]);
-  const [TopRateds, setTopRateds] = useState([]);
+  const [movies, setMovies] = useState([]);
+  const [category, setCategory] = useState([]);
 
-  const movies = [
-    { path: "now_playing", title: "Now Playing", data: NowPlayings },
-    { path: "popular", title: "Popular", data: Popular },
-    { path: "top_rated", title: "Top Rated", data: TopRateds },
+  const movieList = [
+    { path: "now_playing", title: "Now Playing" },
+    { path: "popular", title: "Popular" },
+    { path: "top_rated", title: "Top Rated" },
   ];
+
   useEffect(() => {
     async function fetchAllMovies() {
       try {
-        // Promise.all을 사용해 API를 병렬로 호출
-        const [nowPlayingData, popularData, topRatedData] = await Promise.all([
-          movieAPI.getNowPlaying(),
-          movieAPI.getPopular(),
-          movieAPI.getTopRated(),
-        ]);
-
-        // 상태 업데이트
-        setNowPlayings(nowPlayingData.results);
-        setPopular(popularData.results);
-        setTopRateds(topRatedData.results);
-
-        // 디버깅용 로그 출력
-        // console.log("Now Playing:", nowPlayingData.results);
-        // console.log("Popular:", popularData.results);
-        // console.log("Top Rated:", topRatedData.results);
+        const movieData = await Promise.all(
+          movieList.map(async (e) => {
+            const data = await movieAPI.getMovies(e.path);
+            return { title: e.title, path: e.path, data: data.results };
+          })
+        );
+        setMovies(movieData);
       } catch (error) {
-        console.error("에러 발생:", error);
+        console.error("에러 그만해~", error);
       }
     }
 

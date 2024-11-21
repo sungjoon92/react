@@ -15,13 +15,19 @@ function NowPlaying() {
       }
     }
     fetchMovies();
-  }, []);
+  }, [category]);
 
+  function translate(category) {
+    return category
+      .replaceAll("_", " ") // 모든 `_`를 공백으로 변환
+      .toLowerCase() // 전체를 소문자로 변환
+      .replace(/\b\w/g, (char) => char.toUpperCase()); // 단어의 첫 글자만 대문자로
+  }
   return (
     <>
       <div id="movie-container">
         <div className="movie-list-title">
-          <h2>{category}</h2>
+          <h2>{translate(category)}</h2>
         </div>
         <ul className="movie-list category">
           {movies.map((movie) => {
