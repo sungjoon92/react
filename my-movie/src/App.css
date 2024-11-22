@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Edu+AU+VIC+WA+NT+Arrows:wght@400..700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Edu+AU+VIC+WA+NT+Arrows:wght@400..700&family=Shadows+Into+Light&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Doto:wght@100..900&family=Edu+AU+VIC+WA+NT+Arrows:wght@400..700&family=Shadows+Into+Light&display=swap");
 body {
   background: linear-gradient(to right, #3b3a3a, #8b8980, #474542);
 }
@@ -15,6 +16,8 @@ header {
 }
 #main-logo {
   font-family: "Shadows Into Light", cursive;
+  /* font-family: "Doto", sans-serif; */
+  font-weight: bold;
   font-size: 4rem;
   text-align: center;
 }
@@ -235,6 +238,4 @@ footer {
 .serach div {
   display: inline;
   position: relative;
-}
-.serach span {
 }

@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import movieAPI from "../api/movieAPI";
 import { Link } from "react-router-dom";
+// import searchResults from "./searchResults";
 
 function Home() {
   // movies 스테이트 만들기
   const [movies, setMovies] = useState([]);
-  const [category, setCategory] = useState([]);
-
+  const [searchMovies, setSearchMovies] = useState();
   const movieList = [
     { path: "now_playing", title: "Now Playing" },
     { path: "popular", title: "Popular" },
@@ -19,6 +19,7 @@ function Home() {
         const movieData = await Promise.all(
           movieList.map(async (e) => {
             const data = await movieAPI.getMovies(e.path);
+            setSearchMovies(e.title);
             return { title: e.title, path: e.path, data: data.results };
           })
         );
@@ -54,6 +55,7 @@ function Home() {
               </li>
             ))}
           </ul>
+          <searchResults />
         </div>
       ))}
     </>

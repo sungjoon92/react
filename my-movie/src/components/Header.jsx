@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { login, logout } from "../store/slices/authSlice";
+// import LoginModal from "../components/LoginModal";
+
+import Search from "./Search";
+import movieAPI from "../api/movieAPI";
 export default function Header() {
   const { isLoggedIn } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
@@ -28,42 +32,11 @@ export default function Header() {
     };
   }, []); // 빈 배열로, 컴포넌트가 마운트/언마운트될 때만 실행
 
-  function modalclear(e) {
+  // 모달 백그라운드 클릭시 모달 삭제
+  function modalclear() {
     setShowLoginForm(false);
   }
 
-  /* 검색창 */
-  function Search() {
-    // 검색창 마우스 hover
-    const [isHovered, setIsHovered] = useState(false);
-    const [isFocus, setIsFocus] = useState(false);
-
-    return (
-      <div className="serach">
-        <input
-          onClick={() => setIsFocus(true)}
-          onBlur={() => setIsFocus(false)} // 포커스 상태 false
-          onMouseEnter={() => setIsHovered(true)} // hover 시작
-          onMouseLeave={() => setIsHovered(false)} // hover 종료
-          type="text"
-          style={{
-            width: isHovered || isFocus ? "80%" : "0px",
-            border: isHovered || isFocus ? "" : "none",
-            background: isHovered || isFocus ? "" : "none",
-            transition: " 0.5s",
-          }}
-        />
-        <div>
-          <span
-            onMouseEnter={() => setIsHovered(true)} // hover 시작
-            onMouseLeave={() => setIsHovered(false)} // hover 종료
-          >
-            검색
-          </span>
-        </div>
-      </div>
-    );
-  }
   return (
     <>
       <header>
@@ -79,7 +52,7 @@ export default function Header() {
           ) : null}
 
           {/* <button onClick={() => console.log(isLoggedIn)}>출력</button> */}
-
+          {/* 로그인시 로그아웃버튼, 아닐시 로그인버튼 호출 */}
           {isLoggedIn ? (
             <div
               className="login-button"
@@ -117,6 +90,7 @@ export default function Header() {
             </li>
           </ul>
         </nav>
+        {/* 검색 컴포넌트 */}
         <Search />
       </header>
 

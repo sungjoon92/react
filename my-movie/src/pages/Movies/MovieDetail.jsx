@@ -59,7 +59,7 @@ function MovieDetail() {
       <div className="review">
         <h2>Review</h2>
         {movieReview.map((e) => {
-          return e.content;
+          return <div>{e.content}</div>;
         })}
       </div>
     </>
