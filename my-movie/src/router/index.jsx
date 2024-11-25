@@ -5,6 +5,7 @@ import NotFound from "../pages/NotFound";
 import MovieDetail from "../pages/Movies/MovieDetail";
 import Category from "../pages/MovieList/Category";
 import Mypage from "../pages/Mypage";
+import SearchResults from "../components/SearchResults";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -29,8 +30,8 @@ const router = createBrowserRouter([
         element: <Category></Category>,
       },
       {
-        path: "/movie/category/:category",
-        element: <Category></Category>,
+        path: "movie/search/:title",
+        element: <SearchResults></SearchResults>,
       },
     ],
   },

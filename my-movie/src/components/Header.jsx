@@ -5,7 +5,6 @@ import { login, logout } from "../store/slices/authSlice";
 // import LoginModal from "../components/LoginModal";
 
 import Search from "./Search";
-import movieAPI from "../api/movieAPI";
 export default function Header() {
   const { isLoggedIn } = useSelector((state) => state.auth);
   const dispatch = useDispatch();

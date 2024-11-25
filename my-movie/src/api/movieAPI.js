@@ -24,7 +24,7 @@ const movieAPI = {
   // 영화 검색
   getMovieSearch: async (title) => {
     const response = await api.get(`/search/movie`, {
-      params: { query: title, language: "en-US", page: "1" },
+      params: { query: title, language: "ko", page: "1" },
     });
     return response.data;
   },
