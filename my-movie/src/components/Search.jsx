@@ -30,7 +30,7 @@ function Search() {
       alert("검색어를 입력하세요!");
       return false;
     } else {
-      navigate(`/movie/search/${searchValue}`);
+      navigate(`/movie/search?title=${searchValue}`);
       // window.location.href = `/movie/search/${searchValue}`;
     }
   }

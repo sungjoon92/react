@@ -1,43 +1,48 @@
 import React, { useEffect, useState } from "react";
 import movieAPI from "../../api/movieAPI";
-import { useParams } from "react-router-dom";
+import { useParams, useSearchParams } from "react-router-dom";
 import { useLoading } from "../../LoadingContext";
 
 function SearchResults() {
-  const { title } = useParams();
-  const [SearchResult, setSearchResult] = useState(null); // 초기값을 null로 변경
-
+  // 수정: 직접 검색 파라미터 읽기
+  const [searchParams] = useSearchParams();
+  const [searchResult, setSearchResult] = useState(null);
   const { setIsLoading } = useLoading();
 
   useEffect(() => {
     async function searchMovies() {
-      setIsLoading(true); // 로딩 시작
+      const title = searchParams.get("title"); // 'query' 파라미터 가져오기
+
+      setIsLoading(true);
       try {
         const data = await movieAPI.getMovieSearch(title);
-        setSearchResult(data.results); // 검색 결과 저장
+        setSearchResult(data.results);
       } catch (error) {
         console.error("Error fetching movies:", error);
-        setSearchResult([]); // 오류 발생 시 빈 배열로 설정
+        setSearchResult([]); // 오류 발생 시 빈 배열
       } finally {
-        setIsLoading(false); // 로딩 종료
+        setIsLoading(false);
       }
     }
-    searchMovies();
-  }, [title, setIsLoading]);
 
-  if (SearchResult === null) {
-    // 데이터 요청 중
-    return null;
+    searchMovies();
+  }, [searchParams, setIsLoading]); // 수정: searchParams를 종속성 배열에 추가
+
+  if (searchResult === null) {
+    return null; // 로딩 중
   }
 
-  if (SearchResult.length === 0) {
-    // 검색 결과가 없을 때
-    return <div className="nosearch">검색 결과가 없습니다. "{title}"</div>;
+  if (searchResult.length === 0) {
+    return (
+      <div className="nosearch">
+        검색 결과가 없습니다. "{searchParams.get("title")}"
+      </div>
+    );
   }
 
   return (
     <div>
-      {SearchResult.map((movie) => (
+      {searchResult.map((movie) => (
         <div key={movie.id}>
           <img
             src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
