@@ -96,20 +96,21 @@ export default function Header() {
       {/* 로그인 폼 렌더링 */}
       {showLoginForm && (
         <div id="modal">
-          <div className="login-form">
+          <form className="login-form">
             <label htmlFor="id">ID 입력</label>
             <input type="text" id="id" name="id" autoFocus />
             <label htmlFor="password">Password 입력</label>
             <input type="password" id="password" name="password" />
-            <button
+            <input
+              className="login-button"
+              type="submit"
               onClick={() => {
                 dispatch(login());
                 setShowLoginForm(false); // 로그인 후 폼 닫기
               }}
-            >
-              로그인
-            </button>
-          </div>
+              value={"login"}
+            />
+          </form>
 
           <div className="modal-back" onClick={(e) => modalclear(e)}></div>
         </div>
