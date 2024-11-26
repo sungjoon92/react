@@ -1,5 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 function Mypage() {
   const isLike = useSelector((state) => state.isLike);
@@ -17,11 +18,13 @@ function Mypage() {
           {likedMovies.length > 0 ? (
             likedMovies.map((movie) => (
               <li className="movie-item" key={movie.movieId}>
-                <h3>{movie.data.title}</h3>
-                <img
-                  src={`https://image.tmdb.org/t/p/w300${movie.data.poster_path}`}
-                  alt={movie.data.title}
-                />
+                <Link to={`/movie/detail/${movie.movieId}`}>
+                  <h3>{movie.data.title}</h3>
+                  <img
+                    src={`https://image.tmdb.org/t/p/w300${movie.data.poster_path}`}
+                    alt={movie.data.title}
+                  />
+                </Link>
               </li>
             ))
           ) : (
