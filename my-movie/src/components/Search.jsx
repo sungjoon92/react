@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import movieAPI from "../api/movieAPI";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 function Search() {
   const [isHovered, setIsHovered] = useState(false);
   // 검색창 마우스 hover
   const [isFocus, setIsFocus] = useState(false);
   const [searchValue, setSearchValue] = useState(""); // 입력값 상태
   const [SearchResult, setSearchResult] = useState([]);
-  const { title } = useParams();
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function searchInput() {
@@ -23,39 +24,54 @@ function Search() {
   }, [searchValue]);
 
   // 검색어 입력
-  function handleSearch(e) {
+  function handleSearch() {
     if (searchValue.trim() === "") {
-      e.preventDefault(); // 기본 동작 막기
+      // e.preventDefault(); // 기본 동작 막기
       alert("검색어를 입력하세요!");
-
       return false;
+    } else {
+      navigate(`/movie/search/${searchValue}`);
+      // window.location.href = `/movie/search/${searchValue}`;
     }
   }
-  const inputTag = document.querySelector(".search input");
   function searchChange(value) {
-    inputTag.value = value;
-    title.value = value;
+    setSearchValue(value);
   }
+
   /* 검색창 */
   return (
     <>
       <div className="search">
         <div className="search-list">
-          <input
-            type="text"
-            value={searchValue}
-            onChange={(e) => setSearchValue(e.target.value)}
-            onClick={() => setIsFocus(true)}
-            onBlur={() => setIsFocus(false)}
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
-            placeholder="영화를 검색하세요"
-            autoFocus
-          />
-
-          <Link to={`/movie/search/${searchValue}`} onClick={handleSearch}>
-            검색
-          </Link>
+          <form
+            action=""
+            method="get"
+            onSubmit={(e) => {
+              // submit 기본속성 삭제
+              e.preventDefault();
+            }}
+          >
+            <input
+              type="text"
+              className="search-input"
+              value={searchValue}
+              onChange={(e) => setSearchValue(e.target.value)}
+              onClick={() => setIsFocus(true)}
+              onBlur={() => setIsFocus(false)}
+              onMouseEnter={() => setIsHovered(true)}
+              onMouseLeave={() => setIsHovered(false)}
+              placeholder="영화를 검색하세요"
+              autoFocus
+            />
+            {/* <Link to={`/movie/search/${searchValue}`} onClick={handleSearch}>
+              검색
+            </Link> */}
+            <input
+              className="submit"
+              type="submit"
+              onClick={(e) => handleSearch(e.target.value)}
+            />
+          </form>
 
           {/* 검색값이 있을 때만 리스트를 보여줌*/}
           {searchValue && (

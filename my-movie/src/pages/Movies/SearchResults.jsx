@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import movieAPI from "../api/movieAPI";
+import movieAPI from "../../api/movieAPI";
 import { useParams } from "react-router-dom";
-import { useLoading } from "../LoadingContext";
+import { useLoading } from "../../LoadingContext";
 
 function SearchResults() {
   const { title } = useParams();
   const [SearchResult, setSearchResult] = useState(null); // 초기값을 null로 변경
-  
+
   const { setIsLoading } = useLoading();
 
   useEffect(() => {
