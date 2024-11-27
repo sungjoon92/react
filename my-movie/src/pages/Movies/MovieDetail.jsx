@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import movieAPI from "../../api/movieAPI";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleLike } from "../../store/slices/isLikeSlice";
+import { useLoading } from "../../LoadingContext";
 function MovieDetail() {
   const { movieId } = useParams();
   const [movie, setMovie] = useState([]);
@@ -10,9 +11,12 @@ function MovieDetail() {
   const { isLoggedIn } = useSelector((state) => state.auth);
   const isLike = useSelector((state) => state.isLike[movieId]);
   const dispatch = useDispatch();
+  const { setIsLoading } = useLoading(); // 전역 로딩 상태 가져오기
 
   useEffect(() => {
     async function fetchMovieDetails() {
+      setIsLoading(true);
+
       try {
         const movieData = await movieAPI.getMovieById(movieId);
         const reviewData = await movieAPI.getMovieReviewsById(movieId);
@@ -24,6 +28,8 @@ function MovieDetail() {
         console.log(reviewData.results);
       } catch (error) {
         console.error("에러 그만해~", error);
+      } finally {
+        setIsLoading(false);
       }
     }
 
