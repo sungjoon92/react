@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import movieAPI from "../../api/movieAPI";
-import { useParams, useSearchParams } from "react-router-dom";
+import { Link, useParams, useSearchParams } from "react-router-dom";
 import { useLoading } from "../../LoadingContext";
-
 function SearchResults() {
   // 수정: 직접 검색 파라미터 읽기
   const [searchParams] = useSearchParams();
@@ -41,15 +40,23 @@ function SearchResults() {
   }
 
   return (
-    <div>
-      {searchResult.map((movie) => (
-        <div key={movie.id}>
-          <img
-            src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
-            alt={movie.title}
-          />
-        </div>
-      ))}
+    <div id="movie-container">
+      <h2 className=" movie-list-title">검색결과</h2>
+      <ul className="movie-list category">
+        {searchResult.map((movie) => (
+          <div key={movie.id}>
+            <li className="movie-item" key={movie.movieId}>
+              <Link to={`/movie/detail/${movie.id}`}>
+                <h3>{movie.title}</h3>
+                <img
+                  src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
+                  alt={movie.title}
+                />
+              </Link>
+            </li>
+          </div>
+        ))}
+      </ul>
     </div>
   );
 }
