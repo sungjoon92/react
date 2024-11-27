@@ -97,6 +97,12 @@ export default function Header() {
       {showLoginForm && (
         <div id="modal">
           <form className="login-form">
+            <div className="login-image-box">
+              <img
+                src="https://search.pstatic.net/sunny/?src=https%3A%2F%2Fcdn.crowdpic.net%2Fdetail-thumb%2Fthumb_d_2A581B854BE9DCBCA816EE5E02BE0A75.jpg&type=a340"
+                alt=""
+              />
+            </div>
             <label htmlFor="id">ID 입력</label>
             <input type="text" id="id" name="id" autoFocus />
             <label htmlFor="password">Password 입력</label>

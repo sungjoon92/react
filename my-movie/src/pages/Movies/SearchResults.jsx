@@ -17,7 +17,7 @@ function SearchResults() {
         const data = await movieAPI.getMovieSearch(title);
         setSearchResult(data.results);
       } catch (error) {
-        console.error("Error fetching movies:", error);
+        console.error("또 에러야?:", error);
         setSearchResult([]); // 오류 발생 시 빈 배열
       } finally {
         setIsLoading(false);
