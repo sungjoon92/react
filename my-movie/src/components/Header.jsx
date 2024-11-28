@@ -12,6 +12,9 @@ export default function Header() {
   // 로그인 폼의 표시 여부를 관리
   const [showLoginForm, setShowLoginForm] = useState(false);
 
+  // 패스워드 입력시 로그인 이미지 변경
+  const [loginImage, setLoginImage] = useState();
+
   // 'Esc' 키 눌렀을 때 실행되는 함수
   const handleEscape = (event, setShowLoginForm) => {
     if (event.key === "Escape") {
@@ -36,6 +39,9 @@ export default function Header() {
     setShowLoginForm(false);
   }
 
+  function showLoginImage(e) {
+    showLoginImage(e.target.value);
+  }
   return (
     <>
       <header>
@@ -106,7 +112,14 @@ export default function Header() {
             <label htmlFor="id">ID 입력</label>
             <input type="text" id="id" name="id" autoFocus />
             <label htmlFor="password">Password 입력</label>
-            <input type="password" id="password" name="password" />
+            <input
+              type="password"
+              id="password"
+              name="password"
+              onChange={(e) => {
+                showLoginImage(e);
+              }}
+            />
             <input
               className="login-button"
               type="submit"

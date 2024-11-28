@@ -72,7 +72,7 @@ function Search() {
               className="search-input"
               value={searchValue}
               onChange={(e) => setSearchValue(e.target.value)}
-              click={(e) => setSearchValue(e.target.value)}
+              onClick={(e) => setSearchValue(e.target.value)}
               placeholder="영화를 검색하세요"
               autoFocus
             />
