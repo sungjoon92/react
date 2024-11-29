@@ -3,11 +3,41 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { login, logout } from "../store/slices/authSlice";
 // import LoginModal from "../components/LoginModal";
-
-import catImg from "../assets/passwordcat.png";
-
+// import catImg from "../assets/passwordcat.png";
 import Search from "./Search";
+
 export default function Header() {
+  // // 곰탱이 url
+  // const loginBear = [
+  //   "https://www.tunnelbear.com/static/img/watch_bear3.1ea2cae.png",
+  //   "https://www.tunnelbear.com/static/img/watch_bear4.b7ee0ec.png",
+  //   "https://www.tunnelbear.com/static/img/watch_bear5.245fa99.png",
+  //   "https://www.tunnelbear.com/static/img/watch_bear6.b788430.png",
+  //   "https://www.tunnelbear.com/static/img/watch_bear7.9807292.png",
+  //   "https://www.tunnelbear.com/static/img/watch_bear8.ca337d0.png",
+  //   "https://www.tunnelbear.com/static/img/watch_bear9.66c3905.png",
+  //   "https://www.tunnelbear.com/static/img/watch_bear10.bfa319b.png",
+  //   "https://www.tunnelbear.com/static/img/watch_bear11.e21ff32.png",
+  //   "https://www.tunnelbear.com/static/img/watch_bear12.c957c0b.png",
+  //   "https://www.tunnelbear.com/static/img/watch_bear13.7ee3a60.png",
+  //   "https://www.tunnelbear.com/static/img/watch_bear14.de1c88d.png",
+  //   "https://www.tunnelbear.com/static/img/watch_bear15.f0b6e25.png",
+  //   "https://www.tunnelbear.com/static/img/watch_bear16.66cda9c.png",
+  //   "https://www.tunnelbear.com/static/img/watch_bear17.fcbd56d.png",
+  //   "https://www.tunnelbear.com/static/img/watch_bear18.ab17372.png",
+  //   "https://www.tunnelbear.com/static/img/watch_bear19.da921eb.png",
+  //   "https://www.tunnelbear.com/static/img/watch_bear20.c53ab7e.png",
+  // ];
+  // // 곰 눈감는거
+  // const logoutBear = [
+  //   "https://www.tunnelbear.com/static/img/hide_bear0.9771826.png",
+  //   "https://www.tunnelbear.com/static/img/hide_bear1.02ebfc5.png",
+  //   "https://www.tunnelbear.com/static/img/hide_bear2.3fd96ce.png",
+  //   "https://www.tunnelbear.com/static/img/hide_bear3.d93bff7.png",
+  //   "https://www.tunnelbear.com/static/img/hide_bear4.3bb674d.png",
+  //   "https://www.tunnelbear.com/static/img/hide_bear5.c9504fc.png",
+  // ];
+
   const { isLoggedIn } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
@@ -15,7 +45,7 @@ export default function Header() {
   const [showLoginForm, setShowLoginForm] = useState(false);
 
   // 패스워드 입력시 로그인 이미지 변경
-  const [loginImage, setLoginImage] = useState(null);
+  const [loginImage, setLoginImage] = useState(false);
   console.log(loginImage);
 
   // 모달 백그라운드 클릭시 모달 삭제
@@ -47,9 +77,15 @@ export default function Header() {
     setLoginImage(e.target.value);
   }
 
-  // function LoginIdImage() {
-  //   return <div>ddd</div>;
-  // }
+  // 로그인 이미지 컴포넌트
+  function LoginIdImage() {
+    return (
+      <div className="login-image-box">
+        <div className={loginImage ? "login-image" : ""}>{loginImage}🐱</div>
+      </div>
+    );
+  }
+
   return (
     <>
       <header>
@@ -111,17 +147,18 @@ export default function Header() {
       {showLoginForm && (
         <div id="modal">
           <form className="login-form">
-            <div className="login-image-box">
-              <img
-                className="login-image"
-                src={
-                  loginImage
-                    ? `${catImg}`
-                    : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3hlArMM55Fgu6z5If7C9RT-3rDrnpL5JKkA&s" // 기본 이미지 URL
-                }
-                alt=""
-              />
-            </div>
+            {/* 고양이 이미지 input iD 를 따라가는 css구현으로 변경필요 */}
+            <img
+              className="login-image"
+              src={
+                loginImage
+                  ? "../passwordBear/hide_bear5.c9504fc.png"
+                  : "../idBear/watch_bear3.1ea2cae.png" // 기본 이미지 URL
+              }
+              alt=""
+            />
+            <LoginIdImage></LoginIdImage>
+
             <label htmlFor="id">ID 입력</label>
             <input
               type="text"

@@ -73,10 +73,20 @@ header nav ul li {
   align-items: center;
   justify-content: center;
 }
-.login-form .login-image {
-  width: 50%;
+.login-form .login-image-box {
+  width: 80%;
   height: 100%;
+  margin: 0 auto;
+  border: 1px solid #000;
+  transition: all 1s;
 }
+.login-form .login-image-box .login-image {
+  width: 10%;
+  border: 5px solid #000;
+  border-radius: 30px;
+  transition: all 1s;
+}
+
 /* 로그인 버튼 */
 .login-button {
   cursor: pointer;
