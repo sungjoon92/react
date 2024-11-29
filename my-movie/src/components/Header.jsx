@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import { login, logout } from "../store/slices/authSlice";
 // import LoginModal from "../components/LoginModal";
 
+import catImg from "../assets/passwordcat.png";
+
 import Search from "./Search";
 export default function Header() {
   const { isLoggedIn } = useSelector((state) => state.auth);
@@ -13,12 +15,19 @@ export default function Header() {
   const [showLoginForm, setShowLoginForm] = useState(false);
 
   // 패스워드 입력시 로그인 이미지 변경
-  const [loginImage, setLoginImage] = useState();
+  const [loginImage, setLoginImage] = useState(null);
+  console.log(loginImage);
 
+  // 모달 백그라운드 클릭시 모달 삭제
+  function modalclear() {
+    setShowLoginForm(false);
+    setLoginImage(null);
+  }
   // 'Esc' 키 눌렀을 때 실행되는 함수
   const handleEscape = (event, setShowLoginForm) => {
     if (event.key === "Escape") {
       setShowLoginForm(false); // 로그인 폼 닫기
+      setLoginImage(null);
     }
   };
 
@@ -34,14 +43,13 @@ export default function Header() {
     };
   }, []); // 빈 배열로, 컴포넌트가 마운트/언마운트될 때만 실행
 
-  // 모달 백그라운드 클릭시 모달 삭제
-  function modalclear() {
-    setShowLoginForm(false);
+  function showLoginImage(e) {
+    setLoginImage(e.target.value);
   }
 
-  function showLoginImage(e) {
-    showLoginImage(e.target.value);
-  }
+  // function LoginIdImage() {
+  //   return <div>ddd</div>;
+  // }
   return (
     <>
       <header>
@@ -105,12 +113,33 @@ export default function Header() {
           <form className="login-form">
             <div className="login-image-box">
               <img
-                src="https://search.pstatic.net/sunny/?src=https%3A%2F%2Fcdn.crowdpic.net%2Fdetail-thumb%2Fthumb_d_2A581B854BE9DCBCA816EE5E02BE0A75.jpg&type=a340"
+                className="login-image"
+                src={
+                  loginImage
+                    ? `${catImg}`
+                    : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3hlArMM55Fgu6z5If7C9RT-3rDrnpL5JKkA&s" // 기본 이미지 URL
+                }
                 alt=""
               />
             </div>
             <label htmlFor="id">ID 입력</label>
-            <input type="text" id="id" name="id" autoFocus />
+            <input
+              type="text"
+              id="id"
+              className="login-id"
+              name="id"
+              autoFocus
+              onChange={(e) => {
+                const value = e.target.value;
+                if (value) {
+                  const lastChar = value[value.length - 1]; // 마지막 글자
+                  setLoginImage(lastChar); // 마지막 글자를 loginImage로 설정
+                  // <LoginIdImage></LoginIdImage>;
+                } else {
+                  setLoginImage(null); // 입력이 비어 있을 경우 초기화
+                }
+              }}
+            />
             <label htmlFor="password">Password 입력</label>
             <input
               type="password"

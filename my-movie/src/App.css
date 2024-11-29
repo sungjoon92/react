@@ -73,8 +73,8 @@ header nav ul li {
   align-items: center;
   justify-content: center;
 }
-.login-form img {
-  width: 40%;
+.login-form .login-image {
+  width: 50%;
   height: 100%;
 }
 /* 로그인 버튼 */
