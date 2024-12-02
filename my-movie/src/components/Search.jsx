@@ -42,10 +42,9 @@ function Search() {
   function searchChange(value) {
     // searchValue에 넣음
     setSearchValue(value);
-
     // navigate 사용으로 바뀐 searchValue를 가진 페이지로 이동
     // **************** 이동 시키는게 맞나? ******************
-    navigate(`/movie/search?title=${searchValue}`);
+    // navigate(`/movie/search?title=${searchValue}`);
   }
 
   /* 검색창 */
@@ -72,7 +71,6 @@ function Search() {
               className="search-input"
               value={searchValue}
               onChange={(e) => setSearchValue(e.target.value)}
-              onClick={(e) => setSearchValue(e.target.value)}
               placeholder="영화를 검색하세요"
               autoFocus
             />
