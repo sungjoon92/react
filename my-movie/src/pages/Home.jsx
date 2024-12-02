@@ -42,7 +42,7 @@ function Home() {
             {/* 카테고리 이동 */}
             <Link to={`./movie/category/${section.path}`}>더보기</Link>
           </div>
-          <ul className="movie-list">
+          <ul className="movie-list movie-home">
             {section.data.map((movie) => (
               <li className="movie-item" key={movie.id}>
                 <Link to={`./movie/detail/${movie.id}`}>
