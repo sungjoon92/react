@@ -73,6 +73,9 @@ header nav ul li {
 .login-button {
   cursor: pointer;
 }
+.login-id {
+  transition: all 1s;
+}
 
 /* modal */
 .modal {
@@ -274,6 +277,7 @@ footer {
   text-decoration: none;
   border-radius: 4px;
   text-align: center;
+  cursor: pointer;
 }
 /* 검색항목 없을때 화면 */
 .nosearch {

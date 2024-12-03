@@ -78,9 +78,10 @@ export default function Header() {
     };
   }, []);
 
+  // login modal 포커스, 블러시 상태변경 로직
   const handleFocus = (e) => {
     setIsFocused(true); // 포커스 상태 활성화
-    focusPasswordImage(e);
+    focusPasswordImage(e); // focu 로직 실행
   };
 
   const handleBlur = (e) => {
@@ -99,8 +100,7 @@ export default function Header() {
     setLoginImage(loginBear[index]); // 인덱스에 해당하는 이미지를 설정
   };
 
-  // 비밀번호 입력시 곰변경
-  // 비밀번호 입력 시 이미지 변경 처리
+  // 비밀번호 focus시 이미지 변경 처리
   const focusPasswordImage = () => {
     let index = 0; // 배열의 인덱스 초기화
     const intervalId = setInterval(() => {
@@ -114,6 +114,7 @@ export default function Header() {
     }, 80); // 0.8초 간격
   };
 
+  // 비밀번호 blur시 이미지 변경 처리
   const blurPasswordImage = () => {
     let index = logoutBear.length - 1; // 배열의 마지막 인덱스부터 시작
     const intervalId = setInterval(() => {
@@ -135,6 +136,7 @@ export default function Header() {
         <h1 id="main-logo">
           <Link to="/">Sung Joon Movie</Link>
         </h1>
+
         <div className="login-box">
           {/* 로그인시에만 마이페이지 노출 */}
           {isLoggedIn ? (
@@ -208,13 +210,13 @@ export default function Header() {
               onChange={(e) => {
                 const value = e.target.value;
                 if (value) {
-                  changeLoginId(value);
-                  // setLoginImage(value);
+                  changeLoginId(value); // value 넘겨주기
                 } else {
                   setLoginImage(null); // 입력이 비어 있을 경우 초기화
                 }
               }}
             />
+
             <label htmlFor="password">Password 입력</label>
             <input
               type="password"
