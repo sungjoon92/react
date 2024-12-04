@@ -32,7 +32,11 @@ function Search() {
       alert("검색어를 입력하세요!");
       return false;
     } else {
-      navigate(`/movie/search?title=${searchValue}`);
+      navigate(
+        `/movie/search?title=${searchValue}` /* , {
+        replace: true,
+      } */
+      );
       // window.location.href = `/movie/search/${searchValue}`;
     }
   }
@@ -80,7 +84,7 @@ function Search() {
               className="submit"
               type="submit"
               value={"검색"}
-              onClick={(e) => handleSearch(e.target.value)}
+              onClick={handleSearch}
             />
           </form>
 
