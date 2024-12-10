@@ -10,7 +10,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <RootLayout />,
-    // errorElement: <NotFound />,
+    errorElement: <NotFound />,
     children: [
       {
         index: true,
@@ -36,10 +36,7 @@ const router = createBrowserRouter([
     ],
   },
   { path: "NotFound", element: <NotFound></NotFound> },
-  // {
-  //   path: '/music',
-  //   element: <musiclayout></musiclayout>
-  // }
+
 ]);
 
 export default router;
