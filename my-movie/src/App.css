@@ -139,6 +139,9 @@ header nav ul li {
   align-items: center;
   gap: 3%;
 }
+.movie-list p {
+  font-size: 2rem;
+}
 /* 상위 5개 항목만 표시 */
 .movie-home > *:nth-child(n + 6) {
   display: none;
@@ -271,7 +274,7 @@ footer {
 
 .submit {
   display: inline-block; /* 버튼처럼 보이도록 설정 */
-  width: 10%;
+  width: 50px;
   background-color: #007bff;
   color: white;
   text-decoration: none;
