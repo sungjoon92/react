@@ -45,6 +45,7 @@ export default function LoginModal({ onClose, onLogin }) {
       setLoginImage(passwordBear[index]); // 곰 이미지를 순차적으로 설정
       index++;
 
+
       // 배열 끝에 도달하면 애니메이션 종료
       if (index >= passwordBear.length) clearInterval(intervalId);
     }, 80); // 80ms 간격으로 이미지 변경

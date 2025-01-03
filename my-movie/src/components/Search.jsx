@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import movieAPI from "../api/movieAPI";
 import { Link, useNavigate } from "react-router-dom";
-function Search() {
+function Search({ searchValue, setSearchValue }) {
   // input의 값 searchValue에 넣어주기 (현재는 onChange이벤트로 입력값이 바뀔때마다 바로바로 적용됨)
-  const [searchValue, setSearchValue] = useState(""); // 입력값 상태
   // 검색후 받은 api값 넣어주기
   const [SearchResult, setSearchResult] = useState([]);
 
