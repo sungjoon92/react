@@ -8,18 +8,20 @@ body {
 /* 헤더 */
 header {
   flex-direction: column;
-  background: #d4f7fa;
   z-index: 1;
   padding-top: 1%;
   /* 구글폰트 */
   font-family: "Bebas Neue", sans-serif;
 }
+.header-top {
+  display: flex;
+  justify-content: space-around;
+}
 #main-logo {
   font-family: "Shadows Into Light", cursive;
   /* font-family: "Doto", sans-serif; */
   font-weight: bold;
-  font-size: 4rem;
-  text-align: center;
+  font-size: 2rem;
 }
 header nav {
   width: 80%;
@@ -231,18 +233,35 @@ footer {
 
 /* input에 마우스를 올렸을 때 */
 .search {
-  width: 50%;
-  margin: 0 auto;
+  display: flex;
+  align-items: center;
   position: relative; /* 자식 요소인 검색 리스트를 제대로 배치하기 위한 부모 컨테이너 */
 }
+
 .search .search-list form {
   display: flex;
 }
+
+/* 검색창 input */
 .search .search-input {
   width: 90%;
   font-size: 16px;
   padding: 1%;
   box-sizing: border-box; /* padding을 포함한 너비 계산 방식 */
+  background: none;
+}
+.search .search-input::placeholder {
+  color: black;
+}
+
+.submit {
+  display: inline-block; /* 버튼처럼 보이도록 설정 */
+  width: 50px;
+  text-decoration: none;
+  border-radius: 4px;
+  text-align: center;
+  cursor: pointer;
+  background: none;
 }
 
 .search-list ul {
@@ -272,16 +291,6 @@ footer {
   font-size: 1rem;
 }
 
-.submit {
-  display: inline-block; /* 버튼처럼 보이도록 설정 */
-  width: 50px;
-  background-color: #007bff;
-  color: white;
-  text-decoration: none;
-  border-radius: 4px;
-  text-align: center;
-  cursor: pointer;
-}
 /* 검색항목 없을때 화면 */
 .nosearch {
   font-size: 3rem;

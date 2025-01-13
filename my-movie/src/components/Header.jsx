@@ -34,11 +34,15 @@ export default function Header() {
   return (
     <header>
       {/* 로고 */}
-      <h1 id="main-logo">
-        <Link onClick={hendleLogo} to="/">
-          Sung Joon Movie
-        </Link>
-      </h1>
+      <div className="header-top">
+        <h1 id="main-logo">
+          <Link onClick={hendleLogo} to="/">
+            Joon Movie
+          </Link>
+        </h1>
+        {/* 검색 컴포넌트 */}
+        <Search searchValue={searchValue} setSearchValue={setSearchValue} />
+      </div>
 
       {/* 로그인/로그아웃 버튼 */}
       <div className="login-box">
@@ -80,9 +84,6 @@ export default function Header() {
           </li>
         </ul>
       </nav>
-
-      {/* 검색 컴포넌트 */}
-      <Search searchValue={searchValue} setSearchValue={setSearchValue} />
 
       {/* 로그인 모달 컴포넌트 */}
       {showLoginForm && (
